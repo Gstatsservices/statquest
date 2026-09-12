@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StatQuest — free interactive statistics games for students." />
+  <title>StatQuest | Statistics Games</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#" id="brandHome" aria-label="StatQuest home">
+      <span class="brand-mark">Σ</span>
+      <span>StatQuest</span>
+    </a>
+    <div class="header-actions">
+      <button class="pill" id="difficultyBtn" aria-haspopup="true">Beginner ▾</button>
+      <button class="pill secondary" id="resetBtn">Reset score</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">FREE • NO LOGIN • MOBILE FRIENDLY</div>
+          <h1>Learn statistics by <span>playing.</span></h1>
+          <p>Five quick games covering descriptive statistics, probability, distributions, outliers, and correlation.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-start="descriptive">Start playing</button>
+            <button class="btn ghost" id="howBtn">How it works</button>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Current stats">
+          <div class="mini-chart" aria-hidden="true">
+            <span style="height:34%"></span><span style="height:56%"></span><span style="height:47%"></span><span style="height:82%"></span><span style="height:68%"></span><span style="height:94%"></span>
+          </div>
+          <div class="hero-stats">
+            <div><strong id="heroScore">0</strong><small>Score</small></div>
+            <div><strong id="heroStreak">0</strong><small>Streak</small></div>
+            <div><strong id="heroBest">0</strong><small>Best</small></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="games-section">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">CHOOSE A CHALLENGE</div>
+            <h2>Statistics games</h2>
+          </div>
+          <div class="progress-mini"><span id="answeredCount">0</span> questions answered</div>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card" data-start="descriptive" tabindex="0">
+            <div class="icon cyan">x̄</div>
+            <h3>Descriptive Dash</h3>
+            <p>Mean, median and mode under time pressure.</p>
+            <span class="tag">Core stats</span>
+          </article>
+          <article class="game-card" data-start="probability" tabindex="0">
+            <div class="icon violet">P</div>
+            <h3>Probability Lab</h3>
+            <p>Coins, dice, cards and everyday chance.</p>
+            <span class="tag">Probability</span>
+          </article>
+          <article class="game-card" data-start="distribution" tabindex="0">
+            <div class="icon pink">ƒ</div>
+            <h3>Distribution Detective</h3>
+            <p>Match real situations to statistical distributions.</p>
+            <span class="tag">Distributions</span>
+          </article>
+          <article class="game-card" data-start="outlier" tabindex="0">
+            <div class="icon amber">!</div>
+            <h3>Outlier Hunter</h3>
+            <p>Spot suspicious values before they distort analysis.</p>
+            <span class="tag">EDA</span>
+          </article>
+          <article class="game-card" data-start="correlation" tabindex="0">
+            <div class="icon green">r</div>
+            <h3>Correlation Explorer</h3>
+            <p>Read scatterplots and identify the relationship.</p>
+            <span class="tag">Correlation</span>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section id="gameView" class="view" aria-live="polite">
+      <div class="game-shell">
+        <div class="game-topbar">
+          <button class="back-link" id="backBtn">← All games</button>
+          <div class="live-stats">
+            <span>Score <strong id="scoreValue">0</strong></span>
+            <span>🔥 <strong id="streakValue">0</strong></span>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-meta">
+            <span id="gameLabel">Game</span>
+            <span id="difficultyLabel">Beginner</span>
+          </div>
+          <h2 id="questionTitle">Question</h2>
+          <p id="questionPrompt"></p>
+          <div id="visualArea"></div>
+          <div id="answersArea" class="answers"></div>
+          <div id="feedback" class="feedback" hidden></div>
+          <div class="question-actions">
+            <button class="btn primary" id="nextBtn" hidden>Next question</button>
+            <button class="btn ghost" id="changeGameBtn">Change game</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="howDialog">
+    <div class="dialog-content">
+      <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2>Practice in short rounds.</h2>
+      <p>Choose a game, answer a question, and get instant feedback. Correct answers earn 10 points plus a streak bonus. Your best score is saved only on your device.</p>
+      <div class="rules">
+        <span>✓ No sign-up</span><span>✓ Works offline after loading</span><span>✓ Beginner to Advanced</span>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="difficultyMenu" class="menu" hidden>
+    <button data-level="Beginner">Beginner</button>
+    <button data-level="Intermediate">Intermediate</button>
+    <button data-level="Advanced">Advanced</button>
+  </div>
+
+  <footer>
+    <span>StatQuest</span> — free statistics practice for students.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
